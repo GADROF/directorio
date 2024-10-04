@@ -77,7 +77,7 @@ placeholder="Nombre"/>
 
 <label class="form-label"
 
-for="name">{{ __('Name') }}</label>
+for="name">{{ __('') }}</label>
 
 @error('name')
 <span class="invalid-feedback"
@@ -99,7 +99,7 @@ address"/>
 
 <label class="form-label" for
 
-"email">{{ __('Email Address') }}</label>
+></label>{{ __('') }}</label>
 
 @error('email')
 <span class="invalid-feedback"
@@ -119,7 +119,7 @@ class="form-control @error('password') is-invalid @enderror" name="password"
 required autocomplete="new-password" placeholder="Password"/>
 <label class="form-label" for
 
-"password">{{ __('Password') }}</label>
+"password">{{ __('') }}</label>
 
 @error('password')
 <span class="invalid-feedback"
@@ -140,7 +140,7 @@ autocomplete="new-password" placeholder="Confirm Password"/>
 
 <label class="form-label" for
 
-"password-confirm">{{ __('Confirm Password') }}</label>
+"password-confirm">{{ __('') }}</label>
 
 </div>
 <div class="text-center pt-1 mb-4 pb-1">
