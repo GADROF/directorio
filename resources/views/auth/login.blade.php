@@ -1,31 +1,3 @@
-<!doctype html>
-<html lang="es">
-    <head>
-        <title>Inicio</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
-    </style>
-
-    <link rel="stylesheet" href="{{ asset('build/assets/estilos.css')}}">
-
-    </head>
-    <body>
-
-    <style>
-    /* ... existing styles ... */
-
-    body {
-        background-image: url('build/assets/j.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-
-    /* ... rest of existing styles ... */
-    </style>
-
     @extends('layouts.app')
 
     @section('content')

@@ -1,24 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    body {
-        background-image: url('build/assets/j.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-    .transparent-bg {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-    .card-body {
-        text-align: center;
-    }
-</style>
+
 
 <div class="container py-5">
     <div class="row justify-content-center">

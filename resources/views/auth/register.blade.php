@@ -1,53 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<title>Registro</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1,
-shrink-to-fit=no" />
-<link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.cs
-s" rel="stylesheet" integrity="sha384-
-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ asset('build/assets/estilos.css')}}">
-<style>
-body {
-background-image: url('build/assets/j.jpg');
-background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;
-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
-}
-.gradient-form {
-background-color: transparent; /* Elimina el fondo blanco */
-}
-.card {
-border: none; /* Elimina el borde de la tarjeta */
 
-background-color: rgba(255, 255, 255, 0.85); /* Fondo semi-
-transparente para la tarjeta */
+   @extends('layouts.app')
+   @section('content')
+             <section class="h-120 gradient-form"> <div class="container py-5 h-100">
 
-max-width: 450px; /* Limita el ancho de la tarjeta */
-margin: auto; /* Centra la tarjeta horizontalmente */
-}
-.form-outline {
-margin-bottom: 20px; /* Espaciado entre campos */
-}
-</style>
-</head>
-<body>
+<div class="row d-flex justify-content-center align-items-center h-100">
 
-@extends('layouts.app')
-@section('content')
-<section class="h-100 gradient-form">
-<div class="container py-5 h-100">
-
-<div class="row d-flex justify-content-center align-items-center h-
-100">
-
-<div class="col-xl-10">
+<div class="col-xl-5">
 <div class="card rounded text-black transparent-bg">
 <div class="row g-0">
 <div class="col-lg-12"> <!-- Cambié a col-lg-12 para
@@ -94,8 +52,7 @@ role="alert">
 <div class="form-outline mb-3">
 <input id="email" type="email"
 class="form-control @error('email') is-invalid @enderror" name="email"
-value="{{ old('email') }}" required autocomplete="email" placeholder="Email
-address"/>
+value="{{ old('email') }}" required autocomplete="email" placeholder="Dirección de correo electrónico"/>
 
 <label class="form-label" for
 
@@ -116,7 +73,7 @@ role="alert">
 <div class="form-outline mb-3">
 <input id="password" type="password"
 class="form-control @error('password') is-invalid @enderror" name="password"
-required autocomplete="new-password" placeholder="Password"/>
+required autocomplete="new-password" placeholder="Contraseña"/>
 <label class="form-label" for
 
 "password">{{ __('') }}</label>
@@ -136,7 +93,7 @@ role="alert">
 <div class="form-outline mb-3">
 <input id="password-confirm"
 type="password" class="form-control" name="password_confirmation" required
-autocomplete="new-password" placeholder="Confirm Password"/>
+autocomplete="new-password" placeholder="Confirmar contraseña"/>
 
 <label class="form-label" for
 
@@ -171,7 +128,6 @@ class="btn btn-outline-danger">Iniciar sesión</a>
 </div>
 </section>
 @endsection
-<script src="{{ asset('js/app.js') }}"></script> <!-- Asegúrate de incluir
+<script src="{{ asset('js/app.js') }}"></script> 
 tus scripts de JS -->
-</body>
 </html>
