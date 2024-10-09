@@ -1,7 +1,7 @@
 
    @extends('layouts.app')
    @section('content')
-             <section class="h-120 gradient-form"> <div class="container py-5 h-100">
+    <section class="h-120 gradient-form"> <div class="container py-5 h-100">
 
 <div class="row d-flex justify-content-center align-items-center h-100">
 
@@ -14,8 +14,7 @@ que ocupe todo el ancho -->
 
 <div class="card-body p-md-5 mx-md-4">
 <div class="text-center">
-<img src="build/assets/p.png"
-style="width: 270px;" alt="logo"> <!-- Ajusté el tamaño del logo -->
+<img src="build/assets/p.png" style="width: 270px;" alt="logo"> <!-- Ajusté el tamaño del logo -->
 
 <h4 class="mt-4 mb-4 pb-1">REGISTRO</h4>
 
@@ -74,9 +73,7 @@ role="alert">
 <input id="password" type="password"
 class="form-control @error('password') is-invalid @enderror" name="password"
 required autocomplete="new-password" placeholder="Contraseña"/>
-<label class="form-label" for
-
-"password">{{ __('') }}</label>
+<label class="form-label" for="password">{{ __('') }}</label>
 
 @error('password')
 <span class="invalid-feedback"
@@ -95,9 +92,7 @@ role="alert">
 type="password" class="form-control" name="password_confirmation" required
 autocomplete="new-password" placeholder="Confirmar contraseña"/>
 
-<label class="form-label" for
-
-"password-confirm">{{ __('') }}</label>
+<label class="form-label" for="password-confirm">{{ __('') }}</label>
 
 </div>
 <div class="text-center pt-1 mb-4 pb-1">
