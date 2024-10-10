@@ -1,31 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
-    <!-- Notificación de inicio de sesión -->
-    <div id="loginNotification" class="text-center mb-4">
-        <div class="alert alert-success d-inline-block">
-            <strong>¡Bienvenido!</strong> Has iniciado sesión correctamente.
-        </div>
-    </div>
-
-    <div class="row justify-content-center mt-5"> <!-- Agregado mt-5 para aumentar el margen superior -->
-        <!-- Tarjeta de menú de opciones -->
-        <div class="col-md-5">
-            <div class="card bg-semi-transparent">
-                <div class="card-header text-center">
-                    <h2 class="text-dark">Bienvenido al menú de opciones</h2>
-                </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
                 <div class="card-body">
-                    <form>
-                        <div class="d-flex flex-column align-items-center gap-3">
-                            <!-- Botones más estrechos -->
-                            <button type="button" class="btn btn-primary btn-sm w-50" onclick="location.href='{{ route('crear') }}'">Crear</button>
-                            <button type="button" class="btn btn-success btn-sm w-50" onclick="location.href='{{ route('leer') }}'">Leer</button>
-                            <button type="button" class="btn btn-warning btn-sm w-50" onclick="location.href='{{ route('actualizar') }}'">Actualizar</button>
-                            <button type="button" class="btn btn-danger btn-sm w-50" onclick="location.href='{{ route('eliminar') }}'">Eliminar</button>
-                        </div>
-                    </form>
+                    <div class="btn-group w-100" role="group" aria-label="Opciones de ubicación">
+                        <button type="button" class="btn btn-primary" id="btn-direccion" data-action="mostrar">
+                            <span class="action-text">Mostrar Dirección</span>
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-ubicacion" data-action="mostrar">
+                            <span class="action-text">Mostrar Ubicación</span>
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-piso" data-action="mostrar">
+                            <span class="action-text">Mostrar Piso</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info-container" class="mt-4" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="info-title"></h5>
+                        <p class="card-text" id="info-content"></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,20 +33,41 @@
 </div>
 
 <script>
-    // Animación de la notificación
-    document.addEventListener('DOMContentLoaded', function() {
-        var notification = document.getElementById('loginNotification');
-        notification.style.opacity = '1';
-        notification.style.transition = 'opacity 0.5s ease-in-out';
+    document.querySelectorAll('.btn-group .btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.dataset.action;
+            const infoContainer = document.getElementById('info-container');
+            const infoTitle = document.getElementById('info-title');
+            const infoContent = document.getElementById('info-content');
+            const actionText = this.querySelector('.action-text');
 
-        // Ocultar la notificación después de 2 segundos
-        setTimeout(function() {
-            notification.style.opacity = '0';
-            setTimeout(function() {
-                notification.style.display = 'none';
-            }, 500);
-        }, 2000);
+            if (action === 'mostrar') {
+                // Mostrar información
+                infoContainer.style.display = 'block';
+                infoTitle.textContent = this.textContent.trim();
+                infoContent.textContent = `Información de ${this.textContent.trim()}`;
+                
+                // Cambiar el estado del botón
+                this.dataset.action = 'ocultar';
+                actionText.textContent = `Ocultar ${actionText.textContent.split(' ')[1]}`;
+                this.classList.replace('btn-primary', 'btn-secondary');
+            } else {
+                // Ocultar información
+                infoContainer.style.display = 'none';
+                
+                // Restablecer el estado del botón
+                this.dataset.action = 'mostrar';
+                actionText.textContent = `Mostrar ${actionText.textContent.split(' ')[1]}`;
+                this.classList.replace('btn-secondary', 'btn-primary');
+            }
+
+            // Restablecer otros botones
+            document.querySelectorAll('.btn-group .btn').forEach(otherButton => {
+                if (otherButton !== this && otherButton.dataset.action === 'ocultar') {
+                    otherButton.click();
+                }
+            });
+        });
     });
 </script>
-
 @endsection
