@@ -3,31 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Directorio;
 
 class DirectorioController extends Controller
 {
-    public function create()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        return view('directorio.crear');
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'bienes_id_cliente' => 'required',
-            'direccion' => 'required',
-            'direccion_mac' => 'required',
-            'piso' => 'required',
-            'ext' => 'required',
-            'marca_descripcion' => 'required',
-            'modelo_nombre_host' => 'required',
-            'puerto_enlace' => 'required',
-        ]);
+        //
+    }
 
-        $directorio = new Directorio($request->all());
-        $directorio->save();
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
 
-        return redirect()->route('directorio.crear')->with('success', 'Directorio registrado exitosamente.');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

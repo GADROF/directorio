@@ -9,18 +9,40 @@ class Directorio extends Model
 {
     use HasFactory;
 
+    protected $table = 'directorio';
+
     protected $fillable = [
-        'bienes_id_cliente',
+        'id_cliente',
         'direccion',
         'direccion_mac',
         'piso',
         'ext',
-        'marca_descripcion',
-        'modelo_nombre_host',
+        'marca',
+        'descripcion',
+        'modelo',
+        'nombre_host',
         'puerto_enlace',
         'ip',
         'discado_directo',
         'ubicacion',
-        'rango_ext_piso',
+        'rango_ext',
+        'piso_ext',
     ];
+
+    public function cliente()
+    {
+         return $this->belongsTo(Cliente::class, 'id_cliente');
+    }
+
+
+
+
+
+
+    // Si necesitas definir relaciones, puedes hacerlo aquí
+    // Por ejemplo:
+    // public function cliente()
+    // {
+    //     return $this->belongsTo(Cliente::class, 'id_cliente');
+    // }
 }

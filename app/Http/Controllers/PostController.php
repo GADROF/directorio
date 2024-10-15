@@ -1,64 +1,84 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('posts.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'mac_address' => 'required',
+            'client_id' => 'required',
+            'brand_description' => 'required',
+            'model_hostname' => 'required',
+            'ip' => 'required|ip',
+            'gateway' => 'required|ip',
+            'address' => 'required',
+            'location' => 'required',
+            'floor' => 'required',
+            // Añade más reglas de validación según sea necesario
+        ]);
+    
+        Post::create($request->all());
+        return redirect()->route('posts.index')->with('success', 'Registro creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+        
+        $post->update($request->all());
+        return redirect()->route('posts.index')->with('success', 'Post actualizado exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Post eliminado exitosamente.');
     }
+    public function up()
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('mac_address');
+            $table->string('client_id');
+            $table->string('brand_description');
+            $table->string('model_hostname');
+            $table->ipAddress('ip');
+            $table->ipAddress('gateway');
+            $table->string('ext')->nullable();
+            $table->string('direct_dialing')->nullable();
+            $table->string('address');
+            $table->string('location');
+            $table->string('ext_range')->nullable();
+            $table->string('floor');
+            $table->timestamps();
+        });
+    }
+    
 }
