@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('título', 'Bienvenidos')</title>
+    <title>@yield('title', 'Bienvenidos')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('build/assets/estilos.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/home.css') }}">
     @stack('styles')
 </head>
 <body id="bodyStyle">
@@ -17,28 +17,18 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @auth
+                <a class="navbar-brand" href="{{ route('posts.index') }}">
+                    Directorios
+                </a>
+                @endauth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @auth
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'crear' ? 'active' : '' }}" href="{{ route('crear') }}">Crear</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Leer</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'actualizar' ? 'active' : '' }}" href="{{ route('actualizar') }}">Actualizar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'eliminar' ? 'active' : '' }}" href="{{ route('eliminar') }}">Eliminar</a>
-                            </li>
-                        @endauth
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -48,7 +38,6 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -59,14 +48,11 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -77,13 +63,7 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             @yield('content')
         </main>
     </div>

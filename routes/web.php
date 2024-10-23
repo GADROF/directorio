@@ -1,37 +1,22 @@
 <?php
 
-use App\Http\Controllers\DireccionController;
-
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::resource('posts', PostController::class);
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome')
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('show');
+Route::resource('posts', PostController::class);
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/crear', function () {
-    return view('crear');
-})->name('crear');
-
-Route::get('/leer', function () {
-    return view('leer');
-})->name('leer');
-
-Route::get('/actualizar', function () {
-    return view('actualizar');
-})->name('actualizar');
-
-Route::get('/eliminar', function () {
-    return view('eliminar');
-})->name('eliminar');
-
-
-use App\Http\Controllers\PostController;
-
-Route::resource('posts', PostController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+});

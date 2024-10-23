@@ -1,84 +1,102 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request): View
     {
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+        $search = $request->get('search');
+        $query = Post::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('direccion_mac', 'LIKE', "%{$search}%")
+                  ->orWhere('bienes_id_cliente', 'LIKE', "%{$search}%")
+                  ->orWhere('marca_descripcion', 'LIKE', "%{$search}%")
+                  ->orWhere('modelo_nombre_host', 'LIKE', "%{$search}%")
+                  ->orWhere('ip', 'LIKE', "%{$search}%")
+                  ->orWhere('puerta_de_enlace', 'LIKE', "%{$search}%")
+                  ->orWhere('ext', 'LIKE', "%{$search}%")
+                  ->orWhere('discado_direct', 'LIKE', "%{$search}%")
+                  ->orWhere('direccion', 'LIKE', "%{$search}%")
+                  ->orWhere('ubicacion', 'LIKE', "%{$search}%")
+                  ->orWhere('rango_ext_piso', 'LIKE', "%{$search}%")
+                  ->orWhere('piso', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $posts = $query->paginate();
+
+        return view('post.index', compact('posts', 'search'))
+            ->with('i', ($request->input('page', 1) - 1) * $posts->perPage());
     }
 
-    public function create()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(): View
     {
-        return view('posts.create');
-    }
-    public function store(Request $request)
-    {
-        $request->validate([
-            'mac_address' => 'required',
-            'client_id' => 'required',
-            'brand_description' => 'required',
-            'model_hostname' => 'required',
-            'ip' => 'required|ip',
-            'gateway' => 'required|ip',
-            'address' => 'required',
-            'location' => 'required',
-            'floor' => 'required',
-            // Añade más reglas de validación según sea necesario
-        ]);
-    
-        Post::create($request->all());
-        return redirect()->route('posts.index')->with('success', 'Registro creado exitosamente.');
+        $post = new Post();
+        return view('post.create', compact('post'));
     }
 
-    public function show(Post $post)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(PostRequest $request): RedirectResponse
     {
-        return view('posts.show', compact('post'));
+        Post::create($request->validated());
+        return Redirect::route('posts.index')
+            ->with('success', 'Post created successfully.');
     }
 
-    public function edit(Post $post)
+    /**
+     * Display the specified resource.
+     */
+    public function show($id): View
     {
-        return view('posts.edit', compact('post'));
+        $post = Post::find($id);
+        return view('post.show', compact('post'));
     }
 
-    public function update(Request $request, Post $post)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id): View
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-        
-        $post->update($request->all());
-        return redirect()->route('posts.index')->with('success', 'Post actualizado exitosamente.');
+        $post = Post::find($id);
+        return view('post.edit', compact('post'));
     }
 
-    public function destroy(Post $post)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(PostRequest $request, Post $post): RedirectResponse
     {
+        $post->update($request->validated());
+        return Redirect::route('posts.index')
+            ->with('success', 'Post updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
         $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Post eliminado exitosamente.');
+        return redirect()->route('posts.index')
+            ->with('deleted', 'Post deleted successfully');
     }
-    public function up()
-    {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('mac_address');
-            $table->string('client_id');
-            $table->string('brand_description');
-            $table->string('model_hostname');
-            $table->ipAddress('ip');
-            $table->ipAddress('gateway');
-            $table->string('ext')->nullable();
-            $table->string('direct_dialing')->nullable();
-            $table->string('address');
-            $table->string('location');
-            $table->string('ext_range')->nullable();
-            $table->string('floor');
-            $table->timestamps();
-        });
-    }
-    
 }
