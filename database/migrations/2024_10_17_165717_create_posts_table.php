@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('direccion_mac');
+            $table->string('serial');
             $table->string('bienes_id_cliente');
-            $table->string('marca_descripcion');
-            $table->string('modelo_nombre_host');
+            $table->string('ext');
             $table->string('ip');
             $table->string('puerta_de_enlace');
-            $table->string('ext');
+            $table->string('marca_descripcion');
+            $table->string('modelo_nombre_host');
             $table->string('discado_direct');
             $table->string('direccion');
             $table->string('ubicacion');
-            $table->string('rango_ext_piso');
             $table->string('piso');
             $table->timestamps();
         });

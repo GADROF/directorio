@@ -22,19 +22,18 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'direccion_mac' => 'required|string',
-			'bienes_id_cliente' => 'required|string',
-			'marca_descripcion' => 'required|string',
-			'modelo_nombre_host' => 'required|string',
-			'ip' => 'required|string',
-			'puerta_de_enlace' => 'required|string',
-			'ext' => 'required|string',
-			'discado_direct' => 'required|string',
-			'direccion' => 'required|string',
-			'ubicacion' => 'required|string',
-			'rango_ext_piso' => 'required|string',
-			'piso' => 'required|string',
+            'direccion_mac' => 'required|string',
+            'serial' => 'required|string',
+            'bienes_id_cliente' => 'required|string',
+            'ext' => 'required|string',
+            'ip' => 'required|string',
+            'puerta_de_enlace' => 'required|string',
+            'marca_descripcion' => 'required|string',
+            'modelo_nombre_host' => 'required|string',
+            'discado_direct' => 'required|string',
+            'direccion' => 'required|string',
+            'ubicacion' => 'required|string',
+            'piso' => 'required|string',
         ];
     }
-    
 }

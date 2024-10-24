@@ -19,56 +19,54 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Direccion Mac:</strong>
-                                    {{ $post->direccion_mac }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Bienes Id Cliente:</strong>
-                                    {{ $post->bienes_id_cliente }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Marca Descripcion:</strong>
-                                    {{ $post->marca_descripcion }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Modelo Nombre Host:</strong>
-                                    {{ $post->modelo_nombre_host }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Ip:</strong>
-                                    {{ $post->ip }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Puerta De Enlace:</strong>
-                                    {{ $post->puerta_de_enlace }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Ext:</strong>
-                                    {{ $post->ext }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Discado Direct:</strong>
-                                    {{ $post->discado_direct }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Direccion:</strong>
-                                    {{ $post->direccion }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Ubicacion:</strong>
-                                    {{ $post->ubicacion }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Rango Ext Piso:</strong>
-                                    {{ $post->rango_ext_piso }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Piso:</strong>
-                                    {{ $post->piso }}
-                                </div>
-
+                        <div class="form-group mb-2 mb20">
+                            <strong>Direccion Mac:</strong>
+                            {{ $post->direccion_mac }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Serial:</strong>
+                            {{ $post->serial }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Bienes Id Cliente:</strong>
+                            {{ $post->bienes_id_cliente }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Ext:</strong>
+                            {{ $post->ext }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Ip:</strong>
+                            {{ $post->ip }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Puerta De Enlace:</strong>
+                            {{ $post->puerta_de_enlace }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Marca Descripcion:</strong>
+                            {{ $post->marca_descripcion }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Modelo Nombre Host:</strong>
+                            {{ $post->modelo_nombre_host }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Discado Direct:</strong>
+                            {{ $post->discado_direct }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Direccion:</strong>
+                            {{ $post->direccion }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Ubicacion:</strong>
+                            {{ $post->ubicacion }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Piso:</strong>
+                            {{ $post->piso }}
+                        </div>
                     </div>
                 </div>
             </div>

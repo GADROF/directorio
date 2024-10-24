@@ -51,16 +51,16 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Direccion Mac</th>
+                                        <th>Serial</th>
                                         <th>Bienes Id Cliente</th>
-                                        <th>Marca Descripcion</th>
-                                        <th>Modelo Nombre Host</th>
+                                        <th>Ext</th>
                                         <th>Ip</th>
                                         <th>Puerta De Enlace</th>
-                                        <th>Ext</th>
+                                        <th>Marca Descripcion</th>
+                                        <th>Modelo Nombre Host</th>
                                         <th>Discado Direct</th>
                                         <th>Direccion</th>
                                         <th>Ubicacion</th>
-                                        <th>Rango Ext Piso</th>
                                         <th>Piso</th>
                                         <th></th>
                                     </tr>
@@ -70,16 +70,16 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $post->direccion_mac }}</td>
+                                            <td>{{ $post->serial }}</td>
                                             <td>{{ $post->bienes_id_cliente }}</td>
-                                            <td>{{ $post->marca_descripcion }}</td>
-                                            <td>{{ $post->modelo_nombre_host }}</td>
+                                            <td>{{ $post->ext }}</td>
                                             <td>{{ $post->ip }}</td>
                                             <td>{{ $post->puerta_de_enlace }}</td>
-                                            <td>{{ $post->ext }}</td>
+                                            <td>{{ $post->marca_descripcion }}</td>
+                                            <td>{{ $post->modelo_nombre_host }}</td>
                                             <td>{{ $post->discado_direct }}</td>
                                             <td>{{ $post->direccion }}</td>
                                             <td>{{ $post->ubicacion }}</td>
-                                            <td>{{ $post->rango_ext_piso }}</td>
                                             <td>{{ $post->piso }}</td>
                                             <td>
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">

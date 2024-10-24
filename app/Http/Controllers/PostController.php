@@ -22,16 +22,16 @@ class PostController extends Controller
         if ($search) {
             $query->where(function($q) use ($search) {
                 $q->where('direccion_mac', 'LIKE', "%{$search}%")
+                  ->orWhere('serial', 'LIKE', "%{$search}%")
                   ->orWhere('bienes_id_cliente', 'LIKE', "%{$search}%")
-                  ->orWhere('marca_descripcion', 'LIKE', "%{$search}%")
-                  ->orWhere('modelo_nombre_host', 'LIKE', "%{$search}%")
+                  ->orWhere('ext', 'LIKE', "%{$search}%")
                   ->orWhere('ip', 'LIKE', "%{$search}%")
                   ->orWhere('puerta_de_enlace', 'LIKE', "%{$search}%")
-                  ->orWhere('ext', 'LIKE', "%{$search}%")
+                  ->orWhere('marca_descripcion', 'LIKE', "%{$search}%")
+                  ->orWhere('modelo_nombre_host', 'LIKE', "%{$search}%")
                   ->orWhere('discado_direct', 'LIKE', "%{$search}%")
                   ->orWhere('direccion', 'LIKE', "%{$search}%")
                   ->orWhere('ubicacion', 'LIKE', "%{$search}%")
-                  ->orWhere('rango_ext_piso', 'LIKE', "%{$search}%")
                   ->orWhere('piso', 'LIKE', "%{$search}%");
             });
         }

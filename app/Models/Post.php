@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $direccion_mac
+ * @property $serial
  * @property $bienes_id_cliente
- * @property $marca_descripcion
- * @property $modelo_nombre_host
+ * @property $ext
  * @property $ip
  * @property $puerta_de_enlace
- * @property $ext
+ * @property $marca_descripcion
+ * @property $modelo_nombre_host
  * @property $discado_direct
  * @property $direccion
  * @property $ubicacion
- * @property $rango_ext_piso
  * @property $piso
  * @property $created_at
  * @property $updated_at
@@ -28,7 +28,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-    
     protected $perPage = 20;
 
     /**
@@ -36,7 +35,18 @@ class Post extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['direccion_mac', 'bienes_id_cliente', 'marca_descripcion', 'modelo_nombre_host', 'ip', 'puerta_de_enlace', 'ext', 'discado_direct', 'direccion', 'ubicacion', 'rango_ext_piso', 'piso'];
-
-
+    protected $fillable = [
+        'direccion_mac',
+        'serial',
+        'bienes_id_cliente',
+        'ext',
+        'ip',
+        'puerta_de_enlace',
+        'marca_descripcion',
+        'modelo_nombre_host',
+        'discado_direct',
+        'direccion',
+        'ubicacion',
+        'piso'
+    ];
 }
