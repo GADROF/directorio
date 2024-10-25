@@ -62,6 +62,7 @@
                                         <th>Direccion</th>
                                         <th>Ubicacion</th>
                                         <th>Piso</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -81,6 +82,7 @@
                                             <td>{{ $post->direccion }}</td>
                                             <td>{{ $post->ubicacion }}</td>
                                             <td>{{ $post->piso }}</td>
+                                            <td>{{ $post->status }}</td>
                                             <td>
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary" href="{{ route('posts.show', $post->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Leer') }}</a>

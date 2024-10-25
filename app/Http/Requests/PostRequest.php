@@ -22,18 +22,19 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'direccion_mac' => 'required|string',
-            'serial' => 'required|string',
-            'bienes_id_cliente' => 'required|string',
-            'ext' => 'required|string',
-            'ip' => 'required|string',
-            'puerta_de_enlace' => 'required|string',
-            'marca_descripcion' => 'required|string',
-            'modelo_nombre_host' => 'required|string',
-            'discado_direct' => 'required|string',
-            'direccion' => 'required|string',
-            'ubicacion' => 'required|string',
-            'piso' => 'required|string',
+            'direccion_mac' => 'required|string|max:255',
+            'serial' => 'required|string|max:255',
+            'bienes_id_cliente' => 'required|string|max:255',
+            'ext' => 'required|string|max:255',
+            'ip' => 'required|string|max:255',
+            'puerta_de_enlace' => 'required|string|max:255',
+            'marca_descripcion' => 'nullable|string|max:255',
+            'modelo_nombre_host' => 'nullable|string|max:255',
+            'discado_direct' => 'nullable|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+            'ubicacion' => 'nullable|string|max:255',
+            'piso' => 'required|string|in:estacionamiento,PB,piso 1,piso 2,piso 3,anexo',
+            'status' => 'required|string|in:activo,inactivo',
         ];
     }
 }

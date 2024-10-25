@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('ext');
             $table->string('ip');
             $table->string('puerta_de_enlace');
-            $table->string('marca_descripcion');
-            $table->string('modelo_nombre_host');
-            $table->string('discado_direct');
-            $table->string('direccion');
-            $table->string('ubicacion');
+            $table->string('marca_descripcion')->nullable();
+            $table->string('modelo_nombre_host')->nullable();
+            $table->string('discado_direct')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('ubicacion')->nullable();
             $table->string('piso');
+            $table->string('status');
             $table->timestamps();
         });
     }

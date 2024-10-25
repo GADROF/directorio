@@ -7,33 +7,39 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Post
  *
- * @property $id
- * @property $direccion_mac
- * @property $serial
- * @property $bienes_id_cliente
- * @property $ext
- * @property $ip
- * @property $puerta_de_enlace
- * @property $marca_descripcion
- * @property $modelo_nombre_host
- * @property $discado_direct
- * @property $direccion
- * @property $ubicacion
- * @property $piso
- * @property $created_at
- * @property $updated_at
+ * @property int $id
+ * @property string $direccion_mac
+ * @property string $serial
+ * @property string $bienes_id_cliente
+ * @property string $ext
+ * @property string $ip
+ * @property string $puerta_de_enlace
+ * @property string|null $marca_descripcion
+ * @property string|null $modelo_nombre_host
+ * @property string|null $discado_direct
+ * @property string|null $direccion
+ * @property string|null $ubicacion
+ * @property string $piso
+ * @property string $status
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
- * @package App
+ * @package App\Models
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Post extends Model
 {
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
     protected $perPage = 20;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $fillable = [
         'direccion_mac',
@@ -47,6 +53,17 @@ class Post extends Model
         'discado_direct',
         'direccion',
         'ubicacion',
-        'piso'
+        'piso',
+        'status'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 }

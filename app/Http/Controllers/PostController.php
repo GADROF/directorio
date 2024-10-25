@@ -11,9 +11,6 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request): View
     {
         $search = $request->get('search');
@@ -32,7 +29,8 @@ class PostController extends Controller
                   ->orWhere('discado_direct', 'LIKE', "%{$search}%")
                   ->orWhere('direccion', 'LIKE', "%{$search}%")
                   ->orWhere('ubicacion', 'LIKE', "%{$search}%")
-                  ->orWhere('piso', 'LIKE', "%{$search}%");
+                  ->orWhere('piso', 'LIKE', "%{$search}%")
+                  ->orWhere('status', 'LIKE', "%{$search}%");
             });
         }
 
@@ -42,59 +40,55 @@ class PostController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $posts->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(): View
     {
         $post = new Post();
         return view('post.create', compact('post'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(PostRequest $request): RedirectResponse
     {
-        Post::create($request->validated());
+        $validatedData = $request->validated();
+        
+        // Eliminar campos vacíos para campos opcionales
+        $validatedData = array_filter($validatedData, function($value) {
+            return $value !== null && $value !== '';
+        });
+
+        Post::create($validatedData);
         return Redirect::route('posts.index')
             ->with('success', 'Post created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id): View
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('post.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id): View
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('post.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(PostRequest $request, Post $post): RedirectResponse
     {
-        $post->update($request->validated());
+        $validatedData = $request->validated();
+        
+        // Eliminar campos vacíos para campos opcionales
+        $validatedData = array_filter($validatedData, function($value) {
+            return $value !== null && $value !== '';
+        });
+
+        $post->update($validatedData);
         return Redirect::route('posts.index')
             ->with('success', 'Post updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->route('posts.index')
             ->with('deleted', 'Post deleted successfully');

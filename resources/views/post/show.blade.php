@@ -45,27 +45,31 @@
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Marca Descripcion:</strong>
-                            {{ $post->marca_descripcion }}
+                            {{ $post->marca_descripcion ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Modelo Nombre Host:</strong>
-                            {{ $post->modelo_nombre_host }}
+                            {{ $post->modelo_nombre_host ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Discado Direct:</strong>
-                            {{ $post->discado_direct }}
+                            {{ $post->discado_direct ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Direccion:</strong>
-                            {{ $post->direccion }}
+                            {{ $post->direccion ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Ubicacion:</strong>
-                            {{ $post->ubicacion }}
+                            {{ $post->ubicacion ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Piso:</strong>
                             {{ $post->piso }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Status:</strong>
+                            {{ $post->status }}
                         </div>
                     </div>
                 </div>
