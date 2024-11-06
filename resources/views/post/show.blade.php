@@ -57,15 +57,15 @@
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Direccion:</strong>
-                            {{ $post->direccion ?? 'N/A' }}
+                            {{ $post->direccion->nombre ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Ubicacion:</strong>
-                            {{ $post->ubicacion ?? 'N/A' }}
+                            {{ $post->ubicacion->nombre ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Piso:</strong>
-                            {{ $post->piso }}
+                            {{ $post->piso->nombre ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Status:</strong>

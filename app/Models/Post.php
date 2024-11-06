@@ -2,45 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Post
- *
- * @property int $id
- * @property string $direccion_mac
- * @property string $serial
- * @property string $bienes_id_cliente
- * @property string $ext
- * @property string $ip
- * @property string $puerta_de_enlace
- * @property string|null $marca_descripcion
- * @property string|null $modelo_nombre_host
- * @property string|null $discado_direct
- * @property string|null $direccion
- * @property string|null $ubicacion
- * @property string $piso
- * @property string $status
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
- *
- * @package App\Models
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class Post extends Model
 {
-    /**
-     * The number of models to return for pagination.
-     *
-     * @var int
-     */
-    protected $perPage = 20;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<string>
-     */
     protected $fillable = [
         'direccion_mac',
         'serial',
@@ -51,19 +19,46 @@ class Post extends Model
         'marca_descripcion',
         'modelo_nombre_host',
         'discado_direct',
-        'direccion',
-        'ubicacion',
-        'piso',
+        'direccion_id',
+        'ubicacion_id',
+        'piso_id',
         'status'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    // Relación con la tabla direcciones
+    public function direcciones()
+    {
+        return $this->belongsTo(Direcciones::class, 'direccion_id');
+    }
+
+    // Relación con la tabla ubicaciones
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class, 'ubicacion_id');
+    }
+
+    // Relación con la tabla pisos
+    public function piso()
+    {
+        return $this->belongsTo(Piso::class, 'piso_id');
+    }
+
+    // Relación con la tabla marca_descripciones
+    public function marcaDescripcion()
+    {
+        return $this->belongsTo(MarcaDescripcion::class, 'marca_descripcion');
+    }
+
+    class Post extends Model
+    {
+        use HasFactory;
+    
+        // ... otros atributos y métodos ...
+    
+        public function direccion()
+        {
+            return $this->belongsTo(Direcciones::class, 'direccion_id');
+        }
+    }
+
 }

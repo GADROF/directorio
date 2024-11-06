@@ -79,9 +79,9 @@
                                             <td>{{ $post->marca_descripcion }}</td>
                                             <td>{{ $post->modelo_nombre_host }}</td>
                                             <td>{{ $post->discado_direct }}</td>
-                                            <td>{{ $post->direccion }}</td>
-                                            <td>{{ $post->ubicacion }}</td>
-                                            <td>{{ $post->piso }}</td>
+                                            <td>{{ $post->direccion->nombre }}</td>
+                                            <td>{{ $post->ubicacion->nombre }}</td>
+                                            <td>{{ $post->piso->nombre }}</td>
                                             <td>{{ $post->status }}</td>
                                             <td>
                                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
