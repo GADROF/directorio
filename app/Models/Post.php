@@ -49,16 +49,9 @@ class Post extends Model
         return $this->belongsTo(MarcaDescripcion::class, 'marca_descripcion');
     }
 
-    class Post extends Model
+    // Método adicional para la relación con direcciones
+    public function direccion()
     {
-        use HasFactory;
-    
-        // ... otros atributos y métodos ...
-    
-        public function direccion()
-        {
-            return $this->belongsTo(Direcciones::class, 'direccion_id');
-        }
+        return $this->belongsTo(Direccion::class, 'direccion_id');
     }
-
 }

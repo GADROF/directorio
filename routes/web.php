@@ -47,7 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('marca_descripciones', MarcaDescripcionesController::class);
 
 
-
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 
 
