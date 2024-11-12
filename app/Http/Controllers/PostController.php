@@ -9,6 +9,12 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
+use App\Models\Direccion;
+use App\Models\Ubicacion;
+use App\Models\Piso;
+
+
 class PostController extends Controller
 {
     public function index(Request $request): View
@@ -43,7 +49,10 @@ class PostController extends Controller
     public function create(): View
     {
         $post = new Post();
-        return view('post.create', compact('post'));
+        $direcciones = new Direccion ();
+        $ubicaciones = new Ubicacion ();
+        $pisos = new Piso ();
+        return view('post.create', compact('post', 'direcciones', 'ubicaciones', 'pisos'));
     }
 
     public function store(PostRequest $request): RedirectResponse

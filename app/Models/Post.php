@@ -26,10 +26,7 @@ class Post extends Model
     ];
 
     // Relación con la tabla direcciones
-    public function direcciones()
-    {
-        return $this->belongsTo(Direcciones::class, 'direccion_id');
-    }
+  
 
     // Relación con la tabla ubicaciones
     public function ubicacion()
