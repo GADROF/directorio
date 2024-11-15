@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MarcaDescripcion;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,11 +49,13 @@ class PostController extends Controller
 
     public function create(): View
     {
-        $post = new Post();
-        $direcciones = new Direccion ();
-        $ubicaciones = new Ubicacion ();
-        $pisos = new Piso ();
-        return view('post.create', compact('post', 'direcciones', 'ubicaciones', 'pisos'));
+        $post = new Post ();
+        $direcciones =  Direccion::get();
+        $ubicaciones =  Ubicacion::get();
+        $pisos = Piso::get();
+        $marcadescripciones = MarcaDescripcion::get();
+
+        return view('post.create', compact('post', 'direcciones', 'ubicaciones', 'pisos', "marcadescripciones"));
     }
 
     public function store(PostRequest $request): RedirectResponse

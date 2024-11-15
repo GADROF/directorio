@@ -9,10 +9,11 @@ class MarcaDescripcion extends Model
 {
     use HasFactory;
 
+    protected $table = 'marca_descripciones';
     protected $fillable = ['descripcion']; // Ajusta según tus necesidades
 
     public function posts()
     {
-        return $this->hasOne(Post::class, 'marca_descripcion');
+        return $this->hasOne(Post::class);
     }
 }

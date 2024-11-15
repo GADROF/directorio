@@ -47,10 +47,6 @@ for ($i = 0; $i < count($array); $i++) {
 
 }
 
-        DB::table('direcciones')->insert([
-            'nombre' =>"Oficina de Tecnologia de la Informacion y Comunicación"
-        
-        ]);
 
     }
 }

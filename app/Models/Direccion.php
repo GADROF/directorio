@@ -9,6 +9,7 @@ class Direccion extends Model
 {
     use HasFactory;
 
+    protected $table = "direcciones";
     protected $fillable = ['nombre']; // Ajusta según tus necesidades
 
     public function posts()

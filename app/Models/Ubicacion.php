@@ -9,6 +9,7 @@ class Ubicacion extends Model
 {
     use HasFactory;
 
+    protected $table = "ubicaciones";
     protected $fillable = ['nombre']; // Ajusta según tus necesidades
 
     public function posts()
