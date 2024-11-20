@@ -10,7 +10,7 @@ class Piso extends Model
     use HasFactory;
 
     protected $table = "pisos";
-       protected $fillable = ['numero']; // Ajusta según tus necesidades
+       protected $fillable = ['nombre']; // Ajusta según tus necesidades
 
     public function posts()
     {

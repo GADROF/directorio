@@ -21,7 +21,7 @@ class PisoController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'numero' => 'required|max:255',
+            'nombre' => 'required|max:255',
         ]);
 
         Piso::create($validatedData);
@@ -41,7 +41,7 @@ class PisoController extends Controller
     public function update(Request $request, Piso $piso)
     {
         $validatedData = $request->validate([
-            'numero' => 'required|max:255',
+            'nombre' => 'required|max:255',
         ]);
 
         $piso->update($validatedData);

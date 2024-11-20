@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Marca Descripcion:</strong>
-                            {{ $post->marca_descripcion ?? 'N/A' }}
+                            {{ $post->marcaDescripcion->descripcion ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Modelo Nombre Host:</strong>

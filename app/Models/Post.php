@@ -4,11 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'direccion_mac',
         'serial',
@@ -25,30 +31,66 @@ class Post extends Model
         'status'
     ];
 
-    // Relación con la tabla direcciones
-  
+    /**
+     * Get the direccion that owns the Post.
+     */
+    public function direccion(): BelongsTo
+    {
+        return $this->belongsTo(Direccion::class, 'direccion_id');
+    }
 
-    // Relación con la tabla ubicaciones
-    public function ubicacion()
+    /**
+     * Get the ubicacion that owns the Post.
+     */
+    public function ubicacion(): BelongsTo
     {
         return $this->belongsTo(Ubicacion::class, 'ubicacion_id');
     }
 
-    // Relación con la tabla pisos
-    public function piso()
+    /**
+     * Get the piso that owns the Post.
+     */
+    public function piso(): BelongsTo
     {
         return $this->belongsTo(Piso::class, 'piso_id');
     }
 
-    // Relación con la tabla marca_descripciones
-    public function marcaDescripcion()
+    /**
+     * Get the marcaDescripcion that owns the Post.
+     */
+    public function marcaDescripcion(): BelongsTo
     {
         return $this->belongsTo(MarcaDescripcion::class, 'marca_descripcion');
     }
 
-    // Método adicional para la relación con direcciones
-    public function direccion()
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    /**
+     * Get the post's full address.
+     *
+     * @return string
+     */
+    // public function getFullAddressAttribute(): string
+    // {
+    //     return "{$this->direccion->nombre}, {$this->ubicacion->nombre}, Piso {$this->piso->nombre}";
+    // }
+
+    /**
+     * Scope a query to only include active posts.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
     {
-        return $this->belongsTo(Direccion::class, 'direccion_id');
+        return $query->where('status', 'active');
     }
 }

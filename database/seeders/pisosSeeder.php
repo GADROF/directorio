@@ -26,7 +26,7 @@ class pisosSeeder extends Seeder
    
 
             DB::table('pisos')->insert([
-                'numero' =>$array[$i]
+                'nombre' =>$array[$i]
             
             ]);
         
