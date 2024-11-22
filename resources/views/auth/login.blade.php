@@ -5,14 +5,13 @@
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
-                    <div class="card rounded- text-black transparent-bg">
+                    <div class="card rounded- text-white transparent-bg">
                         <div class="row g-0">
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
                                     <div class="text-center">
                                         <div class="text-center">
-                                          <img src="build/assets/p.png"
-                                            style="width: 300px;" alt="logo">
+                                          
                                           <h4 class="mt-5 mb-5 pb-1">ACCESO</h4>
                                         </div>
                                     </div>
@@ -20,7 +19,13 @@
                                         @csrf
                                         <p>Por favor, inicie sesión en su cuenta</p>
                                         <div class="form-outline mb-3">
-                                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Dirección de correo electrónico" />
+                                        <style>
+  #email {
+    border: 2px solid turquoise;
+  }
+</style>
+
+<input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Dirección de correo electrónico" />
                                             <label class="form-label" for="email">{{ __('                   ') }}</label>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +34,13 @@
                                             @enderror
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña" />
+                                        <style>
+  #password {
+    border: 2px solid turquoise;
+  }
+</style>
+
+<input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña" />
                                             <label class="form-label" for="password">{{ __('             ') }}</label>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -48,14 +59,14 @@
                                             </div>
                                         </div>
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">
+                                            <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-1 mb-3">
                                                 {{ __('Iniciar Sesión') }}
                                             </button>
                                             @if (Route::has('password.request'))
-                                                <a class="text-muted" href="{{ route('password.request') }}">
-                                                    {{ __('¿Olvidaste tu Contraseña?') }}
-                                                </a>
-                                            @endif
+    <a class="text-white" href="{{ route('password.request') }}">
+        {{ __('¿Olvidaste tu Contraseña?') }}
+    </a>
+@endif
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">¿No tienes una cuenta?</p>

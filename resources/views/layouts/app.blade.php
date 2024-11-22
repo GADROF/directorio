@@ -12,10 +12,10 @@
 </head>
 <body id="bodyStyle">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light custom-navbar shadow-sm">
             <div class="container">
             <a class="navbar-brand" href="{{ route('welcome') }}">
-    <img src="{{ asset('build/assets/p.png') }}" alt="Logo" class="navbar-logo" style="width: 200px; height: auto;">
+    <img src="{{ asset('build/assets/Z.png') }}" alt="Logo" class="navbar-logo" style="width: 450px; height: auto;">
 </a>
                 @auth
                 <a class="navbar-brand" href="{{ route('posts.index') }}">
@@ -33,16 +33,21 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Iniciar Sección') }}</a>
+    </li>
+@endif
+@if (Route::has('register'))
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+    </li>
+@endif
+</nav>
+<nav class="navbar navbar-expand-md navbar-light custom-navbar shadow-sm">
+
+
+
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
