@@ -135,7 +135,12 @@
                 </div>
             </div>
             <div class="text-center mt-2 mb-3">
-                <button type="submit" class="btn btn-primary btn-lg">{{ __('Registrar') }}</button>
+    @if(Route::currentRouteName() == 'posts.edit')
+        <button type="submit" class="btn btn-secondary btn-lg">{{ __('Actualizar') }}</button>
+    @else
+        <button type="submit" class="btn btn-primary btn-lg">{{ __('Registrar') }}</button>
+    @endif
+</div>
             </div>
         </div>
     </div>
