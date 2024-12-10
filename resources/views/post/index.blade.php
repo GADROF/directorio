@@ -45,16 +45,16 @@
                         <table class="table custom-table">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <!-- <th>No</th>
                                     <th>Direccion Mac</th>
                                     <th>Serial</th>
-                                    <th>Bienes Id Cliente</th>
+                                    <th>Bienes Id Cliente</th> -->
                                     <th>Ext</th>
-                                    <th>Ip</th>
+                                    <!-- <th>Ip</th>
                                     <th>Puerta De Enlace</th>
                                     <th>Marca Descripcion</th>
                                     <th>Modelo Nombre Host</th>
-                                    <th>Discado Direct</th>
+                                    <th>Discado Direct</th> -->
                                     <th>Direccion</th>
                                     <th>Ubicacion</th>
                                     <th>Piso</th>
@@ -65,16 +65,16 @@
                             <tbody>
                                 @foreach ($posts as $post)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
+                                        <!-- <td>{{ ++$i }}</td>
                                         <td>{{ $post->direccion_mac }}</td>
                                         <td>{{ $post->serial }}</td>
-                                        <td>{{ $post->bienes_id_cliente }}</td>
+                                        <td>{{ $post->bienes_id_cliente }}</td> -->
                                         <td>{{ $post->ext }}</td>
-                                        <td>{{ $post->ip }}</td>
+                                        <!-- <td>{{ $post->ip }}</td>
                                         <td>{{ $post->puerta_de_enlace }}</td>
                                         <td>{{ $post->marcaDescripcion?->descripcion }}</td>
                                         <td>{{ $post->modelo_nombre_host }}</td>
-                                        <td>{{ $post->discado_direct }}</td>
+                                        <td>{{ $post->discado_direct }}</td> -->
                                         <td>{{ $post->direccion?->nombre }}</td>
                                         <td>{{ $post->ubicacion?->nombre }}</td>
                                         <td>{{ $post->piso?->nombre }}</td>

@@ -52,11 +52,10 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\DireccionController;
-use App\Http\Controllers\UbicacionController;
-use App\Http\Controllers\PisoController;
-use App\Http\Controllers\MarcaDescripcionController;
+// use App\Http\Controllers\DireccionController;
+// use App\Http\Controllers\UbicacionController;
+// use App\Http\Controllers\PisoController;
+// use App\Http\Controllers\MarcaDescripcionController;
 
 Route::resources([
     'posts' => PostController::class,
