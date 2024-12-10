@@ -12,7 +12,7 @@
                                     <div class="text-center">
                                         <div class="text-center">
                                           
-                                          <h4 class="mt-5 mb-5 pb-1">}jgkjg</h4>
+                                          <h4 class="mt-5 mb-5 pb-1">ACCESO</h4>
                                         </div>
                                     </div>
                                     <form method="POST" action="{{ route('login') }}">
