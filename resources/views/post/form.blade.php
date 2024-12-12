@@ -18,7 +18,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="bienes_id_cliente" class="form-label">{{ __('ID de Cliente') }} <span class="text-danger">*</span></label>
+                        <label for="bienes_id_cliente" class="form-label">{{ __('Bien Nacional') }} <span class="text-danger">*</span></label>
                         <input type="text" name="bienes_id_cliente" class="form-control @error('bienes_id_cliente') is-invalid @enderror" value="{{ old('bienes_id_cliente', $post->bienes_id_cliente ?? '') }}" id="bienes_id_cliente" placeholder="ID de Cliente" required>
                         @error('bienes_id_cliente')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -27,21 +27,21 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="form-group mb-3">
-                        <label for="ext" class="form-label">{{ __('Ext') }} <span class="text-danger">*</span></label>
+                        <label for="ext" class="form-label">{{ __('Extensión') }} <span class="text-danger">*</span></label>
                         <input type="text" name="ext" class="form-control @error('ext') is-invalid @enderror" value="{{ old('ext', $post->ext ?? '') }}" id="ext" placeholder="Ext" required>
                         @error('ext')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="ip" class="form-label">{{ __('IP') }} <span class="text-danger">*</span></label>
+                        <label for="ip" class="form-label">{{ __('Dirección IP') }} <span class="text-danger">*</span></label>
                         <input type="text" name="ip" class="form-control @error('ip') is-invalid @enderror" value="{{ old('ip', $post->ip ?? '') }}" id="ip" placeholder="IP" required>
                         @error('ip')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="puerta_de_enlace" class="form-label">{{ __('Puerta de Enlace') }} <span class="text-danger">*</span></label>
+                        <label for="puerta_de_enlace" class="form-label">{{ __('Puerto de Enlace') }} <span class="text-danger">*</span></label>
                         <input type="text" name="puerta_de_enlace" class="form-control @error('puerta_de_enlace') is-invalid @enderror" value="{{ old('puerta_de_enlace', $post->puerta_de_enlace ?? '') }}" id="puerta_de_enlace" placeholder="Puerta de Enlace" required>
                         @error('puerta_de_enlace')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -51,7 +51,7 @@
                 <div class="col-md-3 mb-4">
                     <div class="form-group mb-3">
                         <label for="marca_descripcion" class="form-label">{{ __('Marca Descripción') }} <span class="text-danger">*</span></label>
-                        <select name="marca_descripcion" class="form-control @error('marca_descripcion') is-invalid @enderror" id="marca_descripcion" required>
+                        <select name="marca_descripcion" class="form-control @error('marca_descripcion') is-invalid @enderror" id="Descripción de la Marca" required>
                         <option disabled selected value="">Seleccione</option>
                             @foreach($marcadescripciones as $marcadescripcion)
                                 <option value="{{ $marcadescripcion->id }}" {{ old('marca_descripcion', $post->marca_descripcion ?? '') == $marcadescripcion->id ? 'selected' : '' }}>
@@ -64,8 +64,8 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="modelo_nombre_host" class="form-label">{{ __('Modelo Nombre Host') }}</label>
-                        <input type="text" name="modelo_nombre_host" class="form-control @error('modelo_nombre_host') is-invalid @enderror" value="{{ old('modelo_nombre_host', $post->modelo_nombre_host ?? '') }}" id="modelo_nombre_host" placeholder="Modelo Nombre Host">
+                        <label for="modelo_nombre_host" class="form-label">{{ __('Modelo Host') }}</label>
+                        <input type="text" name="modelo_nombre_host" class="form-control @error('modelo_nombre_host') is-invalid @enderror" value="{{ old('modelo_nombre_host', $post->modelo_nombre_host ?? '') }}" id="modelo_nombre_host" placeholder="Modelo Host">
                         @error('modelo_nombre_host')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -122,7 +122,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="status" class="form-label">{{ __('Status') }} <span class="text-danger">*</span></label>
+                        <label for="status" class="form-label">{{ __('Estatus') }} <span class="text-danger">*</span></label>
                         <select name="status" class="form-control @error('status') is-invalid @enderror" id="status" required>
                         <option disabled selected value="">Seleccione</option>
                             <option value="activo" {{ old('status', $post->status ?? '') == 'activo' ? 'selected' : '' }}>Activo</option>

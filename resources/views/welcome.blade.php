@@ -1,5 +1,5 @@
 
-    @extends('layouts.app')
+@extends('layouts.app')
     @section('content')
     <section class="h-100 gradient-form">
         <div class="container py-5 h-100">
@@ -31,4 +31,3 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
-

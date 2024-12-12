@@ -63,7 +63,7 @@
                                         <select id="security_question" name="security_question" 
                                                 class="form-control @error('security_question') is-invalid @enderror" 
                                                 required style="border: 2px solid turquoise;">
-                                            <option value="">Seleccione una pregunta de seguridad</option>
+                                            <option disabled selected value="">Seleccione una pregunta de seguridad</option>
                                             <option value="mascota">¿Cuál es el nombre de tu primera mascota?</option>
                                             <option value="ciudad">¿En qué ciudad naciste?</option>
                                             <option value="escuela">¿Cuál fue el nombre de tu primera escuela?</option>

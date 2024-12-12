@@ -16,10 +16,28 @@
 
                     <div class="card-body">
                         <div class="row"> <!-- Contenedor para alinear horizontalmente -->
+                            @php
+                                $fieldMappings = [
+                                    'direccion_mac' => 'Dirección MAC',
+                                    'serial' => 'Serial',
+                                    'bienes_id_cliente' => 'Bien Nacional',
+                                    'ext' => 'Extensión',
+                                    'ip' => 'Dirección IP',
+                                    'puerta_de_enlace' => 'Puerto de Enlace',
+                                    'marcaDescripcion.descripcion' => 'Descripción de la Marca',
+                                    'modelo_nombre_host' => 'Modelo Host',
+                                    'discado_direct' => 'Discado Directo',
+                                    'direccion.nombre' => 'Dirección',
+                                    'ubicacion.nombre' => 'Ubicación',
+                                    'piso.nombre' => 'Piso',
+                                    'status' => 'Estatus',
+                                ];
+                            @endphp
+
                             @foreach(['direccion_mac', 'serial', 'bienes_id_cliente', 'ext', 'ip', 'puerta_de_enlace', 'marcaDescripcion.descripcion', 'modelo_nombre_host', 'discado_direct', 'direccion.nombre', 'ubicacion.nombre', 'piso.nombre', 'status'] as $field)
                                 <div class="col-md-6 mb-3"> <!-- Ajusta el tamaño de las columnas -->
                                     <div class="result-box"> <!-- Casilla para el resultado -->
-                                        <strong>{{ __(ucwords(str_replace('_', ' ', $field))) }}:</strong>
+                                        <strong>{{ __($fieldMappings[$field] ?? ucwords(str_replace('_', ' ', $field))) }}:</strong>
                                         <div class="result-value">{{ data_get($post, $field, 'N/A') }}</div>
                                     </div>
                                 </div>

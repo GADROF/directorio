@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(direccionesSeeder::class);
         $this->call(marcadescripcionesSeeder::class);
         $this->call(pisosSeeder::class);
+        $this->call(PreguntasSeeder::class);
         $this->call(ubicacionesSeeder::class);
     }
+ 
 }
