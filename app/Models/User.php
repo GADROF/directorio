@@ -4,11 +4,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles; // Asegúrate de importar el trait
+// use Spatie\Permission\Traits\HasRoles; // Asegúrate de importar el trait
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles; // Incluye el trait aquí
+    use HasFactory, Notifiable; // Incluye el trait aquí
 
     /**
      * The attributes that are mass assignable.
