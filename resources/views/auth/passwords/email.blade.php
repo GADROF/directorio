@@ -11,7 +11,7 @@
                                 <div class="text-center">
                                     <h4 class="mt-2 mb-4 pb-1">Recuperación</h4>
                                 </div>
-                                <form method="POST" action="{{route('register') }}">
+                                <form method="POST"action="{{route('register') }}">
                                     @csrf
                                     <div class="form-outline mb-3">
                                         <input id="name" type="text"
@@ -59,21 +59,20 @@
                                     </div>
                                     
                                     <!-- Selector de pregunta de seguridad -->
-                                    <div class="form-outline mb-3">
-                                        <select id="security_question" name="security_question" 
-                                                class="form-control @error('security_question') is-invalid @enderror" 
-                                                required style="border: 2px solid turquoise;">
-                                            <option disabled selected value="">Seleccione una pregunta de seguridad</option>
-                                            <option value="mascota">¿Cuál es el nombre de tu primera mascota?</option>
-                                            <option value="ciudad">¿En qué ciudad naciste?</option>
-                                            <option value="escuela">¿Cuál fue el nombre de tu primera escuela?</option>
-                                        </select>
-                                        @error('security_question')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
+                                    <div class="form-group mb-3">
+    <label for="pregunta_id" class="form-label">{{ __('Preguntas') }} <span class="text-danger">*</span></label>
+    <select name="pregunta_id" class="form-control @error('pregunta_id') is-invalid @enderror" id="pregunta_id" required>
+        <option disabled selected value="">Seleccione</option>
+        @foreach($preguntas as $pregunta)
+            <option value="{{ $pregunta->id }}" {{ old('pregunta_id', $post->pregunta_id ?? '') == $pregunta->id ? 'selected' : '' }}>
+                {{ $pregunta->pregunta }}
+            </option>
+        @endforeach
+    </select>
+    @error('pregunta_id')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
                                     <!-- Campo para la respuesta de seguridad -->
                                     <div class="form-outline mb-3">

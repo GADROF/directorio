@@ -1,16 +1,15 @@
 <?php
 
-use App\Models\MarcaDescripciones;
-use App\Models\Pisos;
-use App\Models\Ubicaciones;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\PisosController;
 use App\Http\Controllers\MarcaDescripcionesController;
+use App\Http\Controllers\PasswordResetLinkController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 // Ruta de bienvenida
 Route::get('/', function () {
@@ -28,42 +27,29 @@ Route::middleware(['auth'])->group(function () {
     // Rutas para posts
     Route::resource('posts', PostController::class);
 
-    // Rutas para Direccion, Ubicacion y Piso
-    Route::resource('direcciones', DireccionController::class);
-    Route::resource('ubicaciones', UbicacionController::class);
-    Route::resource('pisos', PisoController::class);
+    // Rutas para direcciones, ubicaciones, pisos y marcas descripciones
+    Route::resource('direcciones', DireccionesController::class);
+    Route::resource('ubicaciones', UbicacionesController::class);
+    Route::resource('pisos', PisosController::class);
+    Route::resource('marca_descripciones', MarcaDescripcionesController::class);
+    Route::resource('preguntas', PreguntasController::class);
 
     // Ruta específica para el almacenamiento de posts
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    // Esta ruta es innecesaria si ya se define con Route::resource
+    // Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
-    
-
-    Route::resource('direcciones', DireccionesController::class);
-
-    Route::resource('ubicaciones', UbicacionesController::class);
-
-    Route::resource('pisos', PisosController::class);
-
-    Route::resource('marca_descripciones', MarcaDescripcionesController::class);
+    // Ruta para crear posts
+    // Esta ruta es innecesaria si ya se define con Route::resource
+    // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 
-    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+// Ruta para la vista de email
 
-
-
-// use App\Http\Controllers\DireccionController;
-// use App\Http\Controllers\UbicacionController;
-// use App\Http\Controllers\PisoController;
-// use App\Http\Controllers\MarcaDescripcionController;
-
-Route::resources([
-    'posts' => PostController::class,
-    'direcciones' => DireccionController::class,
-    'ubicaciones' => UbicacionController::class,
-    'pisos' => PisoController::class,
-    'marca-descripciones' => MarcaDescripcionController::class,
-]);
+// Ruta para enviar enlace de restablecimiento de contraseña
+Route::post('/password/email', [EmailController::class, 'store'])
+->name('password.register');
 
 
 });
+Route::get('/email', [EmailController::class, 'index'])->name('password.email');
+

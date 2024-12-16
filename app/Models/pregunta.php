@@ -11,11 +11,12 @@ class pregunta extends Model
 
     // Especificar la tabla si no sigue la convención de nombres
     protected $table = 'preguntas';
-        protected $fillable = ['pregunta'];
-
-        public function users()
-        {
-            return $this->hasOne(User::class);
-        }
     
+    // Campos que se pueden llenar masivamente
+    protected $fillable = ['pregunta'];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }
