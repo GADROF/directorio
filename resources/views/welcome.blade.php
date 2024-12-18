@@ -17,7 +17,7 @@
 <br>
 <a href="{{ route('login') }}" class="btn btn-outline-danger">Iniciar Sesión</a>
                                 @if (Route::has('register'))
-    <p class="mt-3">¿No tienes una cuenta? <a href="{{ route('register') }}" class="text-turquoise">Regístrate aquí</a></p>
+    <p class="mt-3">¿No tienes una cuenta?   <a href="{{ route('password.email') }}" class="text-turquoise">Regístrate aquí</a></p>
 @endif
                             @endauth
                             <hr class="my-4">

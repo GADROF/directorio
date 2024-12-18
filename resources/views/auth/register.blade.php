@@ -9,22 +9,10 @@
                         <div class="col-lg-12">
                             <div class="card-body p-md-5 mx-md-4">
                                 <div class="text-center">
-                                    <h4 class="mt-2 mb-4 pb-1">REGISTRO</h4>
+                                    <h4 class="mt-2 mb-4 pb-1">Recuperación</h4>
                                 </div>
                                 <form method="POST" action="{{route('register') }}">
-                                    @csrf
-                                    <div class="form-outline mb-3">
-                                        <input id="name" type="text"
-                                               class="form-control @error('name') is-invalid @enderror" name="name" 
-                                               value="{{ old('name') }}" required autocomplete="name" autofocus 
-                                               placeholder="Nombre" style="border: 2px solid turquoise;"/>
-                                        <label class="form-label" for="name">{{ __('') }}</label>
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
+                                   
                                     <div class="form-outline mb-3">
                                         <input id="email" type="email"
                                                class="form-control @error('email') is-invalid @enderror" name="email"
@@ -92,13 +80,10 @@
 
                                     <div class="text-center pt-1 mb-4 pb-1">
                                         <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-4 mb-3">
-                                            {{ __('Registrarse') }}
+                                            {{ __('Restablecer Contraseña ') }}
                                         </button>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">¿Ya tienes una cuenta?</p>
-                                        <a href="{{ route('login') }}" class="btn btn-outline-danger">Iniciar sesión</a>
-                                    </div>
+                                   
                                 </form>
                             </div>
                         </div>

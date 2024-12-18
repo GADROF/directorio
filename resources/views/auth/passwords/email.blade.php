@@ -9,7 +9,7 @@
                         <div class="col-lg-12">
                             <div class="card-body p-md-5 mx-md-4">
                                 <div class="text-center">
-                                    <h4 class="mt-2 mb-4 pb-1">Recuperación</h4>
+                                    <h4 class="mt-2 mb-4 pb-1">Registro</h4>
                                 </div>
                                 <form method="POST"action="{{route('register') }}">
                                     @csrf
@@ -91,7 +91,7 @@
 
                                     <div class="text-center pt-1 mb-4 pb-1">
                                         <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-4 mb-3">
-                                            {{ __('Restablecer Contraseña') }}
+                                            {{ __('Registrarse') }}
                                         </button>
                                     </div>
 
