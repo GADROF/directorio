@@ -47,11 +47,17 @@ class PostController extends Controller
                   });
             });
         }
-    
-        $posts = $query->paginate();
+        
+        $posts = ($search) ? $query->paginate() : null;
+
+        if(($search)){
+
+            return view('post.index', compact('posts', 'search'))
+                ->with('i', ($request->input('page', 1) - 1) * $posts->perPage());
+        }else{
+            return view('post.index', compact('posts', 'search'));
+        }
         // dd ( $query->get()[0]->direccion_id);
-        return view('post.index', compact('posts', 'search'))
-            ->with('i', ($request->input('page', 1) - 1) * $posts->perPage());
     }
 
     public function create(): View

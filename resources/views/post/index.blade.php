@@ -40,78 +40,83 @@
                             Mostrando resultados para: <strong>{{ $search }}</strong>
                         </div>
                     @endif
+                    @if($search)
                     
-                    <div class="table-responsive">
-                        <table class="table custom-table">
-                            <thead>
-                                <tr>
-                                    <!-- <th>No</th> -->
-                                    <!-- <th>Direccion Mac</th>
-                                    <th>Serial</th>
-                                    <th>Bienes Id Cliente</th> -->
-                                    <th>Extensión</th>
-                                    <!-- <th>Ip</th>
-                                    <th>Puerta De Enlace</th>
-                                    <th>Marca Descripcion</th>
-                                    <th>Modelo Nombre Host</th>
-                                    <th>Discado Direct</th> -->
-                                    <th>Dirección</th>
-                                    <th>Ubicación</th>
-                                    <th>Piso</th>
-                                    <th>Estatus</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($posts as $post)
+                        <div class="table-responsive">
+                            <table class="table custom-table">
+                                <thead>
                                     <tr>
-                                        <!-- <td>{{ ++$i }}</td>
-                                        <td>{{ $post->direccion_mac }}</td>
-                                        <td>{{ $post->serial }}</td>
-                                        <td>{{ $post->bienes_id_cliente }}</td> -->
-                                        <td>{{ $post->ext }}</td>
-                                        <!-- <td>{{ $post->ip }}</td>
-                                        <td>{{ $post->puerta_de_enlace }}</td>
-                                        <td>{{ $post->marcaDescripcion?->descripcion }}</td>
-                                        <td>{{ $post->modelo_nombre_host }}</td>
-                                        <td>{{ $post->discado_direct }}</td> -->
-                                        <td>{{ $post->direccion?->nombre }}</td>
-                                        <td>{{ $post->ubicacion?->nombre }}</td>
-                                        <td>{{ $post->piso?->nombre }}</td>
-                                        <td>{{ $post->status }}</td>
-                                        <td>
-                                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a class="btn btn-sm btn-primary" href="{{ route('posts.show', $post->id) }}">
-                                                    {{ __('Ver') }}
-                                                </a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('posts.edit', $post->id) }}">
-                                                    {{ __('Actualizar') }}
-                                                </a>
-      
-
-<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-
-                                            </form>
-
-                                        </td>
-
+                                        <th>No</th> 
+                                        <th>Mac</th>
+                                        <th>Serial</th> 
+                                        <th>Bien</th> 
+                                        <th>Extensión</th>
+                                        <th>Ip address</th>
+                                        <th>Gateway</th>
+                                        <th>Marca </th>
+                                        <th>Modelo </th>
+                                        <th>Discado </th> 
+                                        <th>Dirección</th> 
+                                        <th>Ubicación</th>
+                                        <th>Piso</th>
+                                        <th>Estatus</th> 
+                                        <th>Acciones</th>
                                     </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($posts as $post)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $post->direccion_mac }}</td>
+                                            <td>{{ $post->serial }}</td>
+                                            <td>{{ $post->bienes_id_cliente }}</td> 
+                                            <td>{{ $post->ext }}</td>
+                                            <td>{{ $post->ip }}</td>
+                                            <td>{{ $post->puerta_de_enlace }}</td>
+                                            <td>{{ $post->marcaDescripcion?->descripcion }}</td>
+                                            <td>{{ $post->modelo_nombre_host }}</td>
+                                            <td>{{ $post->discado_direct }}</td> 
+                                            <td>{{ $post->direccion?->nombre }}</td>
+                                            <td>{{ $post->ubicacion?->nombre }}</td>
+                                            <td>{{ $post->piso?->nombre }}</td>
+                                            <td>{{ $post->status }}</td>
+                                            <td>
+                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="btn btn-sm btn-primary" href="{{ route('posts.show', $post->id) }}">
+                                                        {{ __('Ver') }}
+                                                    </a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('posts.edit', $post->id) }}">
+                                                        {{ __('Actualizar') }}
+                                                    </a>
+        
 
-                                @endforeach
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
 
-                            </tbody>
+                                                </form>
 
-                        </table>
+                                            </td>
 
-                    </div>
+                                        </tr>
+
+                                    @endforeach
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    @endif
 
                 </div>
 
             </div>
 
-            {!! $posts->appends(['search' => $search])->links() !!}
+            @if($search)
+
+                {!! $posts->appends(['search' => $search])->links() !!}
+            @endif
 
         </div>
 

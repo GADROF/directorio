@@ -57,9 +57,9 @@
                                         <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-1 mb-3">
                                             {{ __('Iniciar Sesión') }}
                                         </button>
-                                        @if (Route::has('register'))
+                                        @if (Route::has('nueva-vista'))
                                             <!-- Cambiar la ruta para que redirija a la creación de cuenta -->
-                                            <a class="text-white" href="{{ route('register') }}">
+                                            <a class="text-white" href="{{ route('nueva-vista') }}">
                                                 {{ __('¿Olvidaste tu Contraseña?') }}
                                             </a>
                                         @endif

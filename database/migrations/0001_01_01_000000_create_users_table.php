@@ -28,6 +28,13 @@ return new class extends Migration
                   ->references('id')
                   ->on('preguntas')
                   ->onDelete('set null');
+
+            // Agregar la clave foránea para la tabla de roles
+            $table->unsignedBigInteger('role_id')->nullable();
+            $table->foreign('role_id')
+                  ->references('id')
+                  ->on('roles')
+                  ->onDelete('set null');
         });
 
         // Crear la tabla 'password_reset_tokens'
@@ -46,6 +53,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        // Crear la tabla 'roles'
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -57,5 +72,6 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('roles');
     }
 };

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 // use Spatie\Permission\Traits\HasRoles; // Asegúrate de importar el trait
 
 class User extends Authenticatable
@@ -49,8 +50,10 @@ class User extends Authenticatable
     /**
      * Relación con el modelo Pregunta
      */
-    public function pregunta()
+
+    public function pregunta(): BelongsTo
     {
-        return $this->belongsTo(Pregunta::class);
+        return $this->belongsTo(pregunta::class,  'preguntas_id');
     }
+
 }
