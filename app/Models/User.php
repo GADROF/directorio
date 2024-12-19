@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'preguntas_id', // Agrega esta columna
         'security_answer', // Agrega esta columna si es necesaria
+        'role_id', // Agrega esta columna si es necesaria
     ];
 
     /**

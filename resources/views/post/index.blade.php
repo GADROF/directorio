@@ -13,9 +13,11 @@
                     <div class="header-content">
                         <span id="card_title">{{ __('Directorios Telefónicos') }}</span>
                         <div class="float-right">
-                            <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm float-right">
-                                {{ __('Registrar') }}
-                            </a>
+                            @if(auth()->user()->role_id === 1)
+                                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm float-right">
+                                    {{ __('Registrar') }}
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -87,12 +89,16 @@
                                                     <a class="btn btn-sm btn-primary" href="{{ route('posts.show', $post->id) }}">
                                                         {{ __('Ver') }}
                                                     </a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('posts.edit', $post->id) }}">
-                                                        {{ __('Actualizar') }}
-                                                    </a>
+                                                    @if(auth()->user()->role_id === 1)
+                                                        <a class="btn btn-sm btn-success" href="{{ route('posts.edit', $post->id) }}">
+                                                            {{ __('Actualizar') }}
+                                                        </a>
+                                                    @endif
         
 
-    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    @if(auth()->user()->role_id === 1)
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    @endif
 
                                                 </form>
 

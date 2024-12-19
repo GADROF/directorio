@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+             // Crear la tabla 'roles'
+        //     Schema::create('roles', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('description')->nullable();
+        //     $table->timestamps();
+        // });
         // Crear la tabla 'users'
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -54,13 +62,7 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        // Crear la tabla 'roles'
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
+   
     }
 
     /**

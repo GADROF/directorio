@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        $this->middleware('adminMiddleware', ['only' => ['create','edit','destroy']]);
+        // $this->middleware('subscribed')->except('store');
+    }
+
     public function index(Request $request): View
     {
         $search = $request->get('search');

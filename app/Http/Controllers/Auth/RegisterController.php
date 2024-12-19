@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'preguntas_id' => $data['pregunta_id'],
             'security_answer' => $data['security_answer'],
             'password' => Hash::make($data['password']),
+            'role_id' => 2,
         ]);
     }
 }
